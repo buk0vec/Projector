@@ -3,6 +3,7 @@ import { NavigationContainer, NavigationContainerRef } from "@react-navigation/n
 
 import { createNativeStackNavigator } from "react-native-screens/native-stack"
 import { RootParamList } from "./types"
+import { AuthNavigator } from "./auth-navigator"
 import { PrimaryNavigator } from "./primary-navigator"
 
 const Stack = createNativeStackNavigator<RootParamList>()
@@ -18,10 +19,17 @@ const RootStack = () => {
       }}
     >
       <Stack.Screen
+        name="auth"
+        component={AuthNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="primaryStack"
         component={PrimaryNavigator}
         options={{
-          headerShown: false,
+          headerShown: false
         }}
       />
     </Stack.Navigator>

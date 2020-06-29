@@ -1,4 +1,4 @@
-package com.projector;
+package com.bukovec.projector;
 
 import com.facebook.react.ReactActivity;
 

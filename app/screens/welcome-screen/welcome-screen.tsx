@@ -1,5 +1,5 @@
 import * as React from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView } from "react-native"
+import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView } from 'react-native'
 import { ParamListBase } from "@react-navigation/native"
 import { NativeStackNavigationProp } from "react-native-screens/native-stack"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"

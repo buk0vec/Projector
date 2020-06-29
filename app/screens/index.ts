@@ -1,2 +1,6 @@
 export * from "./welcome-screen/welcome-screen"
 export * from "./demo-screen/demo-screen"
+export * from "./sign-in-screen"
+export * from "./sign-up-screen"
+export * from "./settings-screen"
+export * from "./All-Tasks-screen"

@@ -16,6 +16,10 @@ import { RootStore, RootStoreProvider, setupRootStore } from "./models/root-stor
 import * as storage from "./utils/storage"
 import getActiveRouteName from "./navigation/get-active-routename"
 
+import { ThemeProvider } from "react-native-elements"
+
+import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
+
 // This puts screens in a native ViewController or Activity. If you want fully native
 // stack navigation, use `createNativeStackNavigator` in place of `createStackNavigator`:
 // https://github.com/kmagiera/react-native-screens#using-native-stack-navigator
@@ -49,6 +53,19 @@ const App: React.FunctionComponent<{}> = () => {
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined)
   const [initialNavigationState, setInitialNavigationState] = useState()
   const [isRestoringNavigationState, setIsRestoringNavigationState] = useState(true)
+
+  const [firebaseInitializing, setFirebaseInitializing] = useState<boolean>(true)
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null)
+
+  const onAuthStateChanged = (user) => {
+    setUser(user)
+    if (firebaseInitializing) setFirebaseInitializing(false)
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged)
+    return subscriber
+  }, [])
 
   setRootNavigation(navigationRef)
   useBackButtonHandler(navigationRef, canExit)
@@ -107,21 +124,23 @@ const App: React.FunctionComponent<{}> = () => {
   //
   // You're welcome to swap in your own component to render if your boot up
   // sequence is too slow though.
-  if (!rootStore) {
+  if (!rootStore || firebaseInitializing) {
     return null
   }
 
   // otherwise, we're ready to render the app
   return (
-    <RootStoreProvider value={rootStore}>
-      <SafeAreaProvider initialSafeAreaInsets={initialWindowSafeAreaInsets}>
-        <RootNavigator
-          ref={navigationRef}
-          initialState={initialNavigationState}
-          onStateChange={onNavigationStateChange}
-        />
-      </SafeAreaProvider>
-    </RootStoreProvider>
+    <ThemeProvider>
+      <RootStoreProvider value={rootStore}>
+        <SafeAreaProvider initialSafeAreaInsets={initialWindowSafeAreaInsets}>
+          <RootNavigator
+            ref={navigationRef}
+            initialState={initialNavigationState}
+            onStateChange={onNavigationStateChange}
+          />
+        </SafeAreaProvider>
+      </RootStoreProvider>
+    </ThemeProvider>
   )
 }
 

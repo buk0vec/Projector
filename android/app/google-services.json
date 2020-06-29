@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1019523186483",
+    "firebase_url": "https://projector-ed3cb.firebaseio.com",
+    "project_id": "projector-ed3cb",
+    "storage_bucket": "projector-ed3cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019523186483:android:1054411d863b04d8c34846",
+        "android_client_info": {
+          "package_name": "com.bukovec.projector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019523186483-n35rd1js75ccjj43qckitksa9qu7hrun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bukovec.projector",
+            "certificate_hash": "435e7d4fd7151ffaf013713d4e6efe2a6fb2abe2"
+          }
+        },
+        {
+          "client_id": "1019523186483-f57b1b5aeghioe3h7tjfrmcbrmhalevj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNPM0U-DGQdx_GMDg7OkxTN0ACOe7VuQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019523186483-f57b1b5aeghioe3h7tjfrmcbrmhalevj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

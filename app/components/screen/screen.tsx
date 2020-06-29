@@ -8,7 +8,7 @@ const isIos = Platform.OS === "ios"
 
 function ScreenWithoutScrolling(props: ScreenProps) {
   const insets = useSafeArea()
-  const preset = presets.fixed
+  const preset = props.preset === "fixed" ? presets.fixed : presets.centeredFixed
   const style = props.style || {}
   const backgroundStyle = props.backgroundColor ? { backgroundColor: props.backgroundColor } : {}
   const insetStyle = { paddingTop: props.unsafe ? 0 : insets.top }

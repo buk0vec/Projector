@@ -1,22 +1,28 @@
 import React from "react"
 
-import { createNativeStackNavigator } from "react-native-screens/native-stack"
-import { WelcomeScreen, DemoScreen } from "../screens"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { SettingsScreen, AllTasksScreen } from "../screens"
 import { PrimaryParamList } from "./types"
+import { Text } from "react-native-elements"
 
-const Stack = createNativeStackNavigator<PrimaryParamList>()
+const Tab = createBottomTabNavigator<PrimaryParamList>()
 
 export function PrimaryNavigator() {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-        gestureEnabled: true,
-      }}
-    >
-      <Stack.Screen name="welcome" component={WelcomeScreen} />
-      <Stack.Screen name="demo" component={DemoScreen} />
-    </Stack.Navigator>
+    <Tab.Navigator screenOptions={({ route }) => ({
+      tabBarLabel: ({ color }) => {
+        if (route.name === "AllTasks") {
+          return <Text style={{ color: color }}>All Tasks</Text>
+        } else if (route.name === "Settings") {
+          return <Text style={{ color: color }}>Settings</Text>
+        } else {
+          return <Text>Default</Text>
+        }
+      }
+    })}>
+      <Tab.Screen name="AllTasks" component={AllTasksScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen}/>
+    </Tab.Navigator>
   )
 }
 
@@ -27,4 +33,3 @@ export function PrimaryNavigator() {
  * Anything not on this list will be a standard `back` action in
  * react-navigation.
  */
-export const exitRoutes: string[] = ["welcome"]
