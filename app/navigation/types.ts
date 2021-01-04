@@ -1,6 +1,9 @@
+import { FirebaseAuthTypes } from "@react-native-firebase/auth"
+
 export type RootParamList = {
   primaryStack: undefined
   auth: undefined
+  loadedUser: FirebaseAuthTypes.User
 }
 
 export type PrimaryParamList = {

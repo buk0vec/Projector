@@ -137,6 +137,7 @@ const App: React.FunctionComponent<{}> = () => {
             ref={navigationRef}
             initialState={initialNavigationState}
             onStateChange={onNavigationStateChange}
+            loadedUser={user}
           />
         </SafeAreaProvider>
       </RootStoreProvider>

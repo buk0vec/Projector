@@ -18,5 +18,3 @@ export function AuthNavigator() {
     </Stack.Navigator>
   )
 }
-
-export const exitRoutes: string[] = ["sign-in"]

@@ -14,15 +14,17 @@ export interface SignInScreenProps {
 }
 
 const SignInInputStyle: ViewStyle = {
-  flex: 1
 }
 
 const FlexSpacerStyle: ViewStyle = {
   flex: 1
 }
 
-const ButtonStyle = {
-  flex: 1
+const ButtonStyle: ViewStyle = {
+}
+
+const ROOT: ViewStyle = {
+
 }
 
 export const SignInScreen: React.FunctionComponent<SignInScreenProps> = observer((props) => {
@@ -89,8 +91,7 @@ export const SignInScreen: React.FunctionComponent<SignInScreenProps> = observer
   }
 
   return (
-    <Screen preset="centeredFixed">
-      <View style={FlexSpacerStyle} />
+    <Screen style={ROOT} preset="centeredFixed">
       <Text h1>Sign In</Text>
       <Input ref={emailRef} errorMessage={emailError} textContentType="emailAddress"
         placeholder="Email" containerStyle={SignInInputStyle} onChangeText={email => setEmail(email)}/>
@@ -98,7 +99,6 @@ export const SignInScreen: React.FunctionComponent<SignInScreenProps> = observer
         placeholder="Password" containerStyle={SignInInputStyle} onChangeText={password => setPassword(password)}/>
       <Button title="Sign In" onPress={handleSignInPress} style={ButtonStyle}/>
       <Button title="Sign Up" style={ButtonStyle} onPress={() => props.navigation.navigate("signup", { oldEmail: email, oldPassword: password })}/>
-      <View style={FlexSpacerStyle} />
     </Screen>
   )
 })

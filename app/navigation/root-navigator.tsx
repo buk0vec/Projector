@@ -11,11 +11,11 @@ const Stack = createNativeStackNavigator<RootParamList>()
 const RootStack = () => {
   return (
     <Stack.Navigator
+      initialRouteName="auth"
       screenOptions={{
         headerShown: false,
         gestureEnabled: true,
-
-        stackPresentation: "modal",
+        stackPresentation: "push",
       }}
     >
       <Stack.Screen
@@ -48,3 +48,5 @@ export const RootNavigator = React.forwardRef<
 })
 
 RootNavigator.displayName = "RootNavigator"
+
+export const exitRoutes: string[] = ["sign-in", "AllTasks"]
